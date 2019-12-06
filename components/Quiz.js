@@ -25,6 +25,7 @@ class Quiz extends Component  {
             this.setState(prevState => ({ 
                 Score: prevState.Score + 1, 
                 finish: true, 
+                Switch: true                 
                 
             }));
             
@@ -34,7 +35,8 @@ class Quiz extends Component  {
     Incorrect = () =>{
         if(this.state.counter+1 !== this.state.questionsLeft){
             this.setState(prevState => ({ 
-                counter: prevState.counter + 1,                 
+                counter: prevState.counter + 1,
+                Switch: true                 
             }));
         }
         else{
@@ -44,6 +46,15 @@ class Quiz extends Component  {
             }));
             
         }
+    }
+    Restart = () =>{
+        this.setState(() => ({ 
+            counter: 0,
+            finish: false, 
+            Score: 0
+
+        }));
+    
     }
     static navigationOptions = ({ navigation }) => {
         const { entryId } = navigation.state.params
@@ -94,6 +105,11 @@ class Quiz extends Component  {
                 </View>
                 </View>
                 }
+                <TouchableOpacity onPress={this.Restart} style={Platform.OS === 'ios' ? styles.ActionsIos : styles.ActionsA}>
+                    <Text style={styles.ActionsText}>
+                        Restart Quiz
+                    </Text>
+                </TouchableOpacity>
                 </View>
             }
             </View>

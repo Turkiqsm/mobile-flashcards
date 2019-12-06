@@ -3,6 +3,7 @@ import { getFlashCardData, FLASHCARD_STORAGE_KEY } from './Data'
 import { Notifications } from 'expo'
 import * as Permissions from 'expo-permissions'
 
+const NOTIFICATION_KEY = 'flashCard:notifications'
 
 export function fetchResults () {
   return AsyncStorage.getItem(FLASHCARD_STORAGE_KEY)
